@@ -7,7 +7,8 @@ import (
 
 
 
-func EnforceHTTP() string {
+func EnforceHTTP(url string) string {
+	//url := "localhost:8080" //change url
 	if url[:4] != "http"{
 		return "http://" + url 
 	}
@@ -17,7 +18,7 @@ func EnforceHTTP() string {
 
 func RemoveDomainError(url string) bool {
 
-	if url == os.Getenv("DOMAIN"){
+	if url == os.Getenv ("DOMAIN"){
 		 return false
 	}
 	newURL := strings.Replace(url, "http://", "",1)
@@ -25,7 +26,7 @@ func RemoveDomainError(url string) bool {
 	newURL = strings.Replace(newURL, "www.", "",1)
 	newURL = strings.Split(newURL, "/")[0]
 
-	if(newURL == os.Getenv("DOMAIN")){
+	if newURL == os.Getenv("DOMAIN"){
 		return false
 	}
 	return true

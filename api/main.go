@@ -6,8 +6,9 @@ import (
 	"os"
 
 	"github.com/gofiber/fiber/v2"
-	"github.com/gofiber/fiber/v2/middleWare/logger"
+	"github.com/gofiber/fiber/v2/middleware/logger"
 	"github.com/joho/godotenv"
+	"github.com/soustab10/GoLang-URL-Shortener/routes"
 )
 
 func setupRoutes(app *fiber.App){
@@ -23,9 +24,9 @@ func main() {
 	}
 	app := fiber.New()
 
-	app.use(logger.New())
+	app.Use(logger.New())
 
 	setupRoutes(app)
-
+	//fmt.Println(app)
 	log.Fatal(app.Listen(os.Getenv(("APP_PORT"))))
 }
